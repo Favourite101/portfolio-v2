@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Download } from "lucide-react";
 import { navLinks, profile } from "@/lib/data";
@@ -27,8 +28,15 @@ export default function Nav({ onOpenTerminal }: { onOpenTerminal: () => void }) 
           scrolled ? "glass shadow-lg shadow-black/40" : "border border-transparent"
         }`}
       >
-        <a href="#home" className="font-display text-sm font-bold tracking-tight">
-          <span className="text-accent">/</span>FO
+        <a href="#home" aria-label="Home" className="flex items-center">
+          <Image
+            src="/images/logo.png"
+            alt={`${profile.name} logo`}
+            width={36}
+            height={36}
+            className="h-9 w-9 object-contain"
+            priority
+          />
         </a>
 
         <ul className="hidden items-center gap-1 md:flex">

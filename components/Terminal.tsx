@@ -9,7 +9,7 @@ type Line = { type: "input" | "output"; text: string };
 
 const banner = [
   "  ┌─────────────────────────────────────────┐",
-  "  │   favour@portfolio ~ interactive shell  │",
+  "  │favour@portfolio ~ interactive shell                              │",
   "  └─────────────────────────────────────────┘",
   "Type `help` to see available commands.",
 ];
