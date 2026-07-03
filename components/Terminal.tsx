@@ -3,13 +3,13 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
-import { experience, profile, projects, skills, socials } from "@/lib/data";
+import { education, experience, profile, projects, skills, socials } from "@/lib/data";
 
 type Line = { type: "input" | "output"; text: string };
 
 const banner = [
   "  ┌─────────────────────────────────────────┐",
-  "  │   favour@portfolio ~ interactive shell   │",
+  "  │   favour@portfolio ~ interactive shell  │",
   "  └─────────────────────────────────────────┘",
   "Type `help` to see available commands.",
 ];
@@ -22,11 +22,12 @@ function runCommand(raw: string): string[] {
     case "help":
       return [
         "Available commands:",
-        "  whoami       who is this guy?",
+        "  whoami       a quick intro",
         "  skills       tech I work with",
         "  projects     things I've built",
         "  experience   where I've worked",
-        "  resume       download my résumé",
+        "  education    school & thesis",
+        "  resume       download my resume",
         "  contact      how to reach me",
         "  social       find me online",
         "  clear        clear the screen",
@@ -42,12 +43,19 @@ function runCommand(raw: string): string[] {
       return skills.map((g) => `${g.category.padEnd(16)} ${g.items.join(", ")}`);
     case "projects":
       return projects.map(
-        (p) => `• ${p.title}\n    ${p.url}`,
+        (p) => `• ${p.title}\n    ${p.url ?? p.status ?? "private"}`,
       );
     case "experience":
       return experience.map(
         (e) => `• ${e.role} @ ${e.company}  (${e.date})`,
       );
+    case "education":
+      return [
+        `${education.degree} — ${education.school}`,
+        `${education.honor} · CGPA ${education.gpa}  (${education.date})`,
+        "",
+        `Thesis: ${education.thesis}`,
+      ];
     case "resume":
       if (typeof window !== "undefined") window.open(profile.resumeUrl, "_blank");
       return ["Opening résumé in a new tab… 📄"];
@@ -71,7 +79,7 @@ function runCommand(raw: string): string[] {
         `  ${socials.email}`,
       ];
     case "ls":
-      return ["about  experience  projects  skills  contact  resume.pdf"];
+      return ["about  experience  projects  skills  education  contact  resume.pdf"];
     case "echo hello":
       return ["hello 👋 thanks for stopping by"];
     case "sudo":

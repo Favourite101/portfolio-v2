@@ -1,13 +1,7 @@
 import Image from "next/image";
 import Reveal from "./Reveal";
 import SectionHeading from "./SectionHeading";
-import { profile } from "@/lib/data";
-
-const highlights = [
-  "3+ years shipping full-stack products end to end",
-  "30% faster APIs · 45% more inquiries · 50% better retrieval",
-  "Backend depth in Java/Spring Boot & Python/Django",
-];
+import { highlights, profile } from "@/lib/data";
 
 export default function About() {
   return (

@@ -16,9 +16,9 @@ const config: Config = {
           600: "#2a2f3a",
         },
         accent: {
-          DEFAULT: "#2dd4bf", // teal
-          soft: "#5eead4",
-          violet: "#a78bfa",
+          DEFAULT: "#a78bfa", // purple
+          soft: "#c4b5fd",
+          violet: "#8b5cf6",
         },
       },
       fontFamily: {

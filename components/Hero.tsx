@@ -3,14 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowDown, FileText, Github, Linkedin, Mail } from "lucide-react";
-import { profile, socials } from "@/lib/data";
-
-const roles = [
-  "Software Engineer.",
-  "Full-Stack Developer.",
-  "Backend & API Builder.",
-  "End-to-End Problem Solver.",
-];
+import { heroRoles as roles, profile, socials } from "@/lib/data";
 
 function useTypewriter(words: string[]) {
   const [index, setIndex] = useState(0);
@@ -59,6 +52,16 @@ export default function Hero() {
         >
           Hi, my name is
         </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.15 }}
+          className="mb-4 inline-flex items-center gap-2 rounded-full border border-accent/25 bg-accent/10 px-3 py-1 font-mono text-xs text-accent-soft"
+        >
+          <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+          {profile.badge}
+        </motion.div>
 
         <motion.h1
           initial={{ opacity: 0, y: 24 }}
