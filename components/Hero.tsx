@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowDown, FileText, Github, Linkedin, Mail } from "lucide-react";
+import { Medium } from "./icons";
 import { heroRoles as roles, profile, socials } from "@/lib/data";
 
 function useTypewriter(words: string[]) {
@@ -106,6 +107,7 @@ export default function Hero() {
             {[
               { icon: Github, href: socials.github, label: "GitHub" },
               { icon: Linkedin, href: socials.linkedin, label: "LinkedIn" },
+              { icon: Medium, href: socials.medium, label: "Medium" },
               { icon: Mail, href: `mailto:${socials.email}`, label: "Email" },
             ].map(({ icon: Icon, href, label }) => (
               <a

@@ -1,4 +1,5 @@
 import { Github, Linkedin, Mail } from "lucide-react";
+import { Medium } from "./icons";
 import Reveal from "./Reveal";
 import { socials } from "@/lib/data";
 
@@ -28,6 +29,7 @@ export default function Contact() {
             {[
               { icon: Github, href: socials.github, label: "GitHub" },
               { icon: Linkedin, href: socials.linkedin, label: "LinkedIn" },
+              { icon: Medium, href: socials.medium, label: "Medium" },
               { icon: Mail, href: `mailto:${socials.email}`, label: "Email" },
             ].map(({ icon: Icon, href, label }) => (
               <a
