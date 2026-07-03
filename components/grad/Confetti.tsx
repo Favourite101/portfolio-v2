@@ -2,49 +2,49 @@
 
 import { useCallback, useEffect } from "react";
 import confetti from "canvas-confetti";
-import { PartyPopper } from "lucide-react";
+import { Sparkles } from "lucide-react";
 
-const GOLD = ["#c9a24b", "#e6cf94", "#a67c1e", "#f5e6c0", "#a78bfa"];
+const PASTELS = ["#f9a8d4", "#c4b5fd", "#fde68a", "#6ee7b7", "#93c5fd", "#fdba74"];
 
 export default function Confetti() {
   const burst = useCallback(() => {
-    const end = Date.now() + 900;
-    const frame = () => {
-      confetti({
-        particleCount: 4,
-        angle: 60,
-        spread: 60,
-        origin: { x: 0, y: 0.7 },
-        colors: GOLD,
-        scalar: 0.9,
-      });
-      confetti({
-        particleCount: 4,
-        angle: 120,
-        spread: 60,
-        origin: { x: 1, y: 0.7 },
-        colors: GOLD,
-        scalar: 0.9,
-      });
-      if (Date.now() < end) requestAnimationFrame(frame);
-    };
-    frame();
+    const hearts = confetti.shapeFromText({ text: "💛", scalar: 2.2 });
+    const spark = confetti.shapeFromText({ text: "✨", scalar: 2 });
+
+    // A cheerful pop from the middle.
+    confetti({
+      particleCount: 60,
+      spread: 90,
+      startVelocity: 40,
+      origin: { y: 0.5 },
+      colors: PASTELS,
+      scalar: 1.1,
+    });
+    // Raining hearts + sparkles.
+    confetti({
+      particleCount: 24,
+      spread: 120,
+      startVelocity: 30,
+      origin: { y: 0.4 },
+      shapes: [hearts, spark],
+      scalar: 2,
+      gravity: 0.7,
+    });
   }, []);
 
   useEffect(() => {
-    // Respect users who prefer reduced motion.
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduce) return;
-    const t = setTimeout(burst, 350);
+    const t = setTimeout(burst, 400);
     return () => clearTimeout(t);
   }, [burst]);
 
   return (
     <button
       onClick={burst}
-      className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-white/50 px-5 py-2.5 text-sm font-medium text-gold-deep transition-transform hover:scale-105"
+      className="animate-bob inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-pastel-rose to-pastel-lilac px-6 py-3 font-cute text-base font-semibold text-white shadow-lg shadow-pastel-pink/40 transition-transform hover:scale-105"
     >
-      <PartyPopper size={17} /> Celebrate with me
+      <Sparkles size={18} /> celebrate with me!
     </button>
   );
 }
