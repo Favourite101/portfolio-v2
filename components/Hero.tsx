@@ -53,16 +53,6 @@ export default function Hero() {
           Hi, my name is
         </motion.p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.15 }}
-          className="mb-4 inline-flex items-center gap-2 rounded-full border border-accent/25 bg-accent/10 px-3 py-1 font-mono text-xs text-accent-soft"
-        >
-          <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-          {profile.badge}
-        </motion.div>
-
         <motion.h1
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -109,7 +99,7 @@ export default function Hero() {
             rel="noopener noreferrer"
             className="glow-hover inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-6 py-3 text-sm font-medium text-white/80"
           >
-            <FileText size={16} /> Résumé
+            <FileText size={16} /> Resume
           </a>
 
           <div className="ml-1 flex items-center gap-1">

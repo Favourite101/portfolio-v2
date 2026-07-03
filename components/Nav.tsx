@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { navLinks } from "@/lib/data";
+import { Download } from "lucide-react";
+import { navLinks, profile } from "@/lib/data";
 
 export default function Nav({ onOpenTerminal }: { onOpenTerminal: () => void }) {
   const [scrolled, setScrolled] = useState(false);
@@ -43,13 +44,22 @@ export default function Nav({ onOpenTerminal }: { onOpenTerminal: () => void }) 
           ))}
         </ul>
 
-        <button
-          onClick={onOpenTerminal}
-          className="glow-hover rounded-full border border-white/10 bg-white/[0.03] px-4 py-1.5 font-mono text-xs text-accent-soft"
-          aria-label="Open terminal"
-        >
-          <span className="text-white/40">$</span> terminal
-        </button>
+        <div className="flex items-center gap-2">
+          <a
+            href={profile.resumeUrl}
+            download
+            className="glow-hover inline-flex items-center gap-1.5 rounded-full bg-accent px-4 py-1.5 text-xs font-semibold text-ink-950"
+          >
+            <Download size={14} /> Resume
+          </a>
+          <button
+            onClick={onOpenTerminal}
+            className="glow-hover hidden rounded-full border border-white/10 bg-white/[0.03] px-4 py-1.5 font-mono text-xs text-accent-soft sm:inline-block"
+            aria-label="Open terminal"
+          >
+            <span className="text-white/40">$</span> terminal
+          </button>
+        </div>
       </nav>
     </motion.header>
   );

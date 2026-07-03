@@ -58,7 +58,7 @@ function runCommand(raw: string): string[] {
       ];
     case "resume":
       if (typeof window !== "undefined") window.open(profile.resumeUrl, "_blank");
-      return ["Opening résumé in a new tab… 📄"];
+      return ["Opening resume in a new tab… 📄"];
     case "contact":
       return [`email: ${socials.email}`, "Fire off an email — I reply fast."];
     case "social":

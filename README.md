@@ -36,7 +36,7 @@ npm run build    # production build
 app/          # App Router entry, layout, global styles
 components/    # Nav, Hero, About, Experience, Projects, Skills, Contact, Terminal, Footer
 lib/data.ts   # Single source of truth for all content
-public/        # Résumé, images
+public/        # Resume, images
 ```
 
 All content lives in [`lib/data.ts`](lib/data.ts) — edit there to update the site.

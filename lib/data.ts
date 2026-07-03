@@ -1,7 +1,6 @@
 export const profile = {
   name: "Favour Oluwatunmibi",
   title: "Backend Software Engineer",
-  badge: "Founding Engineer @ CSG · Best Graduating Student '26",
   tagline:
     "Backend software engineer building resilient, event-driven systems — and applied ML that reaches real users. I like owning systems end to end, from schema to production.",
   location: "Nigeria · Open to remote & relocation",
@@ -140,10 +139,10 @@ export const projects: Project[] = [
     description:
       "Award-winning hybrid CNN–Vision Transformer detecting diabetic retinopathy, glaucoma, cataract, and AMD from retinal fundus images — 0.8869 AUC-ROC and 85.3% accuracy on ODIR-5K, clinically validated at Babcock University Teaching Hospital. Solo-built FastAPI backend and model-serving API with tiered clinician/user/admin access; presented and won Best HealthTech at a Paystack-sponsored ideathon.",
     tech: ["PyTorch", "Vision Transformers", "CNN", "FastAPI", "Python", "React"],
+    url: "https://retinal-detection-frontend.vercel.app/",
     live: true,
     featured: true,
     award: "Best HealthTech",
-    status: "Live demo — link on request",
   },
   {
     title: "Student Room Booking System",
