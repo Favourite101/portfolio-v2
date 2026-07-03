@@ -1,5 +1,6 @@
 import { Github, Linkedin, Mail } from "lucide-react";
 import { Medium } from "./icons";
+import CopyEmail from "./CopyEmail";
 import Reveal from "./Reveal";
 import { socials } from "@/lib/data";
 
@@ -24,6 +25,8 @@ export default function Contact() {
           >
             <Mail size={18} /> Say hello
           </a>
+
+          <CopyEmail />
 
           <div className="flex items-center gap-3">
             {[
