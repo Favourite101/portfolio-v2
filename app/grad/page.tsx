@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, GraduationCap, Sparkles } from "lucide-react";
 import Confetti from "@/components/grad/Confetti";
-import WishForm from "@/components/grad/WishForm";
 import { grad } from "@/lib/grad";
 import { socials } from "@/lib/data";
 
@@ -108,17 +107,6 @@ export default function GradPage() {
               📸 Graduation photos coming soon.
             </p>
           )}
-        </section>
-
-        {/* WELL WISHES */}
-        <section className="border-t border-gold/15 py-20">
-          <h2 className="mb-3 text-center font-serif text-3xl font-bold sm:text-4xl">
-            Leave me a note
-          </h2>
-          <p className="mx-auto mb-10 max-w-md text-center text-cream-ink/65">
-            A word, a prayer, a memory — I&apos;d love to hear from you.
-          </p>
-          <WishForm />
         </section>
 
         {/* STAY IN TOUCH */}
