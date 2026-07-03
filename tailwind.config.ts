@@ -20,10 +20,21 @@ const config: Config = {
           soft: "#c4b5fd",
           violet: "#8b5cf6",
         },
+        gold: {
+          DEFAULT: "#c9a24b",
+          deep: "#a67c1e",
+          soft: "#e6cf94",
+        },
+        cream: {
+          DEFAULT: "#faf6ef",
+          200: "#f2ead9",
+          ink: "#2b2118",
+        },
       },
       fontFamily: {
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
         display: ["var(--font-display)", "system-ui", "sans-serif"],
+        serif: ["var(--font-serif)", "Georgia", "serif"],
         mono: ["var(--font-mono)", "ui-monospace", "monospace"],
       },
       keyframes: {

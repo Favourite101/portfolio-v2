@@ -22,6 +22,15 @@
   ::selection {
     @apply bg-accent/30 text-white;
   }
+
+  /* Justify multi-line body copy (reads cleaner than ragged-left, esp. on
+     mobile). Single-line paragraphs are visually unaffected. Use the
+     `text-center`/`text-left` utilities on a <p> to opt out. */
+  p {
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto;
+  }
 }
 
 @layer utilities {

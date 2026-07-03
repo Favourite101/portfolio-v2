@@ -12,7 +12,7 @@ export default function Contact() {
         <h2 className="font-display text-4xl font-bold tracking-tight sm:text-5xl">
           Get in touch
         </h2>
-        <p className="mx-auto mt-6 max-w-lg text-lg leading-relaxed text-white/60">
+        <p className="mx-auto mt-6 max-w-lg text-center text-lg leading-relaxed text-white/60">
           I&apos;m currently open to new opportunities and collaborations. Whether you
           have a role in mind or just want to connect, my inbox is always open — I&apos;ll
           get back to you.
