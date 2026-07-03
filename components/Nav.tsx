@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { Download } from "lucide-react";
 import { navLinks, profile } from "@/lib/data";
@@ -29,13 +28,19 @@ export default function Nav({ onOpenTerminal }: { onOpenTerminal: () => void }) 
         }`}
       >
         <a href="#home" aria-label="Home" className="flex items-center">
-          <Image
-            src="/images/logo.png"
-            alt={`${profile.name} logo`}
-            width={36}
-            height={36}
-            className="h-9 w-9 object-contain"
-            priority
+          <span
+            aria-hidden
+            className="h-9 w-9 bg-accent transition-colors"
+            style={{
+              WebkitMaskImage: "url(/images/logo.png)",
+              maskImage: "url(/images/logo.png)",
+              WebkitMaskSize: "contain",
+              maskSize: "contain",
+              WebkitMaskRepeat: "no-repeat",
+              maskRepeat: "no-repeat",
+              WebkitMaskPosition: "center",
+              maskPosition: "center",
+            }}
           />
         </a>
 
