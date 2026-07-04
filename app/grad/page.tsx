@@ -67,7 +67,7 @@ export default function GradPage() {
 
         {/* SLIDESHOW */}
         <section className="py-16">
-          <SectionTitle emoji="📸">our favourite moments</SectionTitle>
+          <SectionTitle emoji="📸">my favourite moments</SectionTitle>
           <Slideshow photos={grad.slideshow} />
         </section>
 

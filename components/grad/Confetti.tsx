@@ -44,7 +44,7 @@ export default function Confetti() {
       onClick={burst}
       className="animate-bob inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-pastel-rose to-pastel-lilac px-6 py-3 font-cute text-base font-semibold text-white shadow-lg shadow-pastel-pink/40 transition-transform hover:scale-105"
     >
-      <Sparkles size={18} /> press me 🥹
+      <Sparkles size={18} /> press me 😗
     </button>
   );
 }
