@@ -44,7 +44,7 @@ export type Experience = {
 export const experience: Experience[] = [
   {
     role: "Founding Engineer — Backend & Platform Architecture",
-    company: "CSG Development",
+    company: "Resov (CSG Development)",
     date: "Oct 2025 — Present",
     points: [
       "Own end-to-end technical direction for Resov, a grant-management platform connecting donors with grant applicants — from requirements through architecture and deployment.",
@@ -80,7 +80,7 @@ export const experience: Experience[] = [
   {
     role: "Software Engineer (Part-time)",
     company: "Stalwart Crest Ltd",
-    date: "Sep 2024 — Jul 2026",
+    date: "Sep 2024 — Sep 2025",
     points: [
       "Led a team of 4 engineers building a digital banking platform clone — authentication, transaction flows, and account management — delivered 2 weeks ahead of schedule.",
       "Partnered with Babcock University's Software Development Unit (facilitated through Stalwart Crest) to migrate and maintain the school website, managing content and structure through the CMS.",

@@ -93,28 +93,41 @@ export default function GradPage() {
           </div>
         </section>
 
-        {/* SCRAPBOOK */}
+        {/* THEMED SCRAPBOOK CHAPTERS */}
+        {grad.chapters.map((chapter) => (
+          <section key={chapter.title} className="py-16">
+            <SectionTitle emoji={chapter.emoji}>{chapter.title}</SectionTitle>
+            {chapter.note && (
+              <p className="mx-auto -mt-4 mb-10 max-w-lg text-center font-hand text-2xl text-pastel-rose">
+                {chapter.note}
+              </p>
+            )}
+            <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 lg:grid-cols-4">
+              {chapter.photos.map((photo, i) => (
+                <Polaroid key={photo.src || i} photo={photo} index={i} />
+              ))}
+            </div>
+          </section>
+        ))}
+
+        {/* COMING SOON */}
         <section className="py-16">
-          <SectionTitle emoji="🩷">the scrapbook</SectionTitle>
-          <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 lg:grid-cols-4">
-            {grad.scrapbook.map((photo, i) => (
-              <Polaroid key={i} photo={photo} index={i} />
-            ))}
+          <div className="mx-auto max-w-xl rounded-[32px] border-2 border-dashed border-pastel-lilac/60 bg-white/50 p-8 text-center shadow-sm sm:p-10">
+            <span className="animate-bob inline-block text-5xl">{grad.comingSoon.emoji}</span>
+            <h2 className="mt-3 font-cute text-3xl font-bold text-pastel-plum sm:text-4xl">
+              {grad.comingSoon.title}
+            </h2>
+            <p className="mt-3 font-hand text-2xl text-pastel-rose">{grad.comingSoon.note}</p>
           </div>
         </section>
 
         {/* MY PEOPLE */}
         <section className="py-16">
           <SectionTitle emoji="🫶">my people</SectionTitle>
-          <div className="mx-auto mb-10 max-w-xl rounded-3xl bg-white/60 p-6 text-center shadow-sm sm:p-8">
+          <div className="mx-auto max-w-xl rounded-3xl bg-white/60 p-6 text-center shadow-sm sm:p-8">
             <p className="text-center font-hand text-2xl leading-snug text-pastel-plum">
-              {grad.people.note}
+              {grad.peopleNote}
             </p>
-          </div>
-          <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-4">
-            {grad.people.photos.map((photo, i) => (
-              <Polaroid key={i} photo={photo} index={i + 2} />
-            ))}
           </div>
         </section>
 
