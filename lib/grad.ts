@@ -1,23 +1,40 @@
-// Content for the /grad celebration page. This is a cute memory scrapbook —
-// edit everything here. Photos live in /public/grad/ and are referenced by
-// `src` (e.g. "/grad/matric-1.jpg"). Any photo left with src: "" shows a
-// pretty pastel placeholder so the page always looks full.
+// Content for the /grad celebration page — a cute memory scrapbook.
+// Photos live in /public/grad/ and are referenced by `src` (e.g. "/grad/matric-1.jpg").
+// A photo with src: "" shows a pretty pastel placeholder (great for "coming soon").
+//
+// Memories are organised into SECTIONS, and each memory is a GROUP of one or
+// more photos that share a single caption. Multi-photo groups render as a
+// clustered mini-album so related pictures stay together.
 
 export type Photo = {
   src: string;
-  caption: string;
-  rotate?: number; // degrees of playful tilt
-  emoji?: string; // shown on the placeholder if there's no photo yet
+  emoji?: string; // shown on the placeholder when src is ""
 };
 
-export type Chapter = {
+export type Group = {
+  caption: string;
+  photos: Photo[];
+  rotate?: number; // playful tilt for the whole group
+};
+
+export type Section = {
   emoji: string;
   title: string;
   note?: string;
-  photos: Photo[];
+  groups: Group[];
 };
 
 const g = (src: string) => `/grad/${src}`;
+const one = (caption: string, src: string, rotate?: number): Group => ({
+  caption,
+  rotate,
+  photos: [{ src: g(src) }],
+});
+const many = (caption: string, srcs: string[], rotate?: number): Group => ({
+  caption,
+  rotate,
+  photos: srcs.map((s) => ({ src: g(s) })),
+});
 
 export const grad = {
   name: "Favour",
@@ -28,161 +45,115 @@ export const grad = {
   honor: "Best Graduating Student",
   gpa: "4.89 / 5.00",
 
-  // Big cheerful greeting at the top.
   hero: {
     greeting: "we did it!! 🎓",
     line: "four years, so many memories, and the best people ✨",
   },
 
-  // Auto-playing slideshow of favourite pictures.
+  // Auto-playing slideshow. Opens with the very beginning and closes with a
+  // placeholder for the graduation photoshoot — a little bookend.
   slideshow: [
     { src: g("matric-1.jpg"), caption: "where it all began 🎀" },
-    { src: g("first-set-of-awards.jpg"), caption: "the wins started early 🏆" },
+    { src: g("first-set-of-awards.jpg"), caption: "first set of awards 🏆" },
     { src: g("gdg-team-1.jpg"), caption: "my tech family 🤖" },
     { src: g("sabbath-1.jpg"), caption: "sabbaths together 🤍" },
     { src: g("final-defense-1.jpg"), caption: "defended it! 🎤" },
     { src: g("grad-class-picture-day-2.jpg"), caption: "class of 2026 📸" },
     { src: g("bethel-chapel-grad-week.jpg"), caption: "grad week feels 🎓" },
-  ] as Photo[],
+    { src: "", caption: "and this is how it ends… 📸✨", emoji: "📸" },
+  ] as (Photo & { caption: string })[],
 
-  // Best moments through the years.
-  moments: [
-    { year: "Year 1", text: "found my footing (and my people 🫶)", emoji: "🌱" },
-    { year: "Year 2", text: "fell in love with building things 💻", emoji: "✨" },
-    { year: "Year 3", text: "leadership, late nights & big wins 🏆", emoji: "🚀" },
-    { year: "Year 4", text: "thesis, awards, and finishing strong 🎓", emoji: "👑" },
-  ],
-
-  // Themed scrapbook chapters. Each renders as a titled polaroid grid.
-  chapters: [
+  sections: [
     {
-      emoji: "🎒",
-      title: "how it started",
-      note: "fresh-faced, a little nervous, and so excited for everything ahead.",
-      photos: [
-        { src: g("matric-1.jpg"), caption: "matriculation day 🎀", rotate: -5 },
-        { src: g("matric-2.jpg"), caption: "officially a student 📜", rotate: 3 },
-        { src: g("matric-3.jpg"), caption: "taking the oath 🤍", rotate: -3 },
-        { src: g("matric-4.jpg"), caption: "matric fits 💫", rotate: 4 },
-        { src: g("first-day.png"), caption: "day one 🥺", rotate: -4 },
-        { src: g("first-week-2.jpg"), caption: "first week nerves 🌸", rotate: 5 },
-        { src: g("first-time-in-the-cafeteria.jpg"), caption: "first caf meal 🍽️", rotate: -6 },
-        { src: g("first-morning-run.png"), caption: "6am morning runs 🏃‍♀️", rotate: 3 },
-        { src: g("first-dinner-1.jpg"), caption: "first dinner 🍝", rotate: -3 },
-        { src: g("first-dinner-2.jpg"), caption: "all dressed up ✨", rotate: 4 },
-        { src: g("first-dinner-3.jpg"), caption: "brand new friends 💕", rotate: -5 },
-        { src: g("first-sabbath.jpg"), caption: "first sabbath 🤍", rotate: 3 },
-        { src: g("IMG-20230623-WA0004.jpg"), caption: "somewhere in the beginning 🌱", rotate: -4 },
+      emoji: "🌱",
+      title: "firsts",
+      note: "every story starts somewhere — here's where mine did.",
+      groups: [
+        many("matriculation day 🎓", ["matric-1.jpg", "matric-2.jpg", "matric-3.jpg", "matric-4.jpg"], -4),
+        one("day one on campus 🥺", "first-day.png", 3),
+        one("first week nerves 🌸", "first-week-2.jpg", -3),
+        many("first dinner ✨", ["first-dinner-1.jpg", "first-dinner-2.jpg", "first-dinner-3.jpg"], 4),
+        one("first morning run 🏃‍♀️", "first-morning-run.png", -5),
+        one("first sabbath 🤍", "first-sabbath.jpg", 3),
+        one("first set of awards 🏆", "first-set-of-awards.jpg", -3),
+        one("the early days 🌱", "IMG-20230623-WA0004.jpg", 5),
       ],
     },
     {
       emoji: "📚",
       title: "the grind",
-      note: "internships, defenses, and the thesis that almost ended me (worth it).",
-      photos: [
-        { src: g("siwes-1.jpg"), caption: "internship season 💼", rotate: 4 },
-        { src: g("siwes-2.jpg"), caption: "learning on the job 🛠️", rotate: -3 },
-        { src: g("siwes-defense.jpg"), caption: "SIWES defense ✅", rotate: 5 },
-        { src: g("mini-defense-1.jpg"), caption: "mini defense jitters 😅", rotate: -4 },
-        { src: g("mini-defense-2.jpg"), caption: "made it through 🙌", rotate: 3 },
-        { src: g("final-defense-1.jpg"), caption: "final defense 🎤", rotate: -5 },
-        { src: g("final-defense-2.jpg"), caption: "defending the thesis 🧠", rotate: 4 },
-        { src: g("final-defense-3.jpg"), caption: "and… passed! 🎉", rotate: -3 },
-        { src: g("last-class-2.jpg"), caption: "the very last class 🥹", rotate: 5 },
+      note: "the internships, defenses and long nights that earned the gown.",
+      groups: [
+        many("SIWES · internship 💼", ["siwes-1.jpg", "siwes-2.jpg", "siwes-defense.jpg"], -3),
+        many("mini defense 🎤", ["mini-defense-1.jpg", "mini-defense-2.jpg"], 4),
+        one("final defense — passed! 🎉", "final-defense-1.jpg", -4),
       ],
     },
     {
-      emoji: "💻",
-      title: "building things",
-      note: "the tech community that turned late-night ideas into real things.",
-      photos: [
-        { src: g("gdg-team-1.jpg"), caption: "GDG fam 🤖", rotate: -4 },
-        { src: g("gdg-team-2.jpg"), caption: "the tech crew 💫", rotate: 3 },
-        { src: g("gdg-team-3.jpg"), caption: "community > everything 🫶", rotate: -3 },
-        { src: g("gdg-orbit-field-trip.jpg"), caption: "orbit field trip 🚀", rotate: 4 },
-        { src: g("gdg-orbit-field-trip-2.jpg"), caption: "learning together 🛰️", rotate: -5 },
-        { src: g("gdg-track-event.jpg"), caption: "leading a track 🎯", rotate: 3 },
-        { src: g("dev-fest-1.jpg"), caption: "DevFest! 🎉", rotate: -4 },
-        { src: g("dev-fest-2.jpg"), caption: "so much to learn 📡", rotate: 5 },
-        { src: g("tech-xplore-1.jpg"), caption: "TechXplore ⚡", rotate: -3 },
-        { src: g("tech-xplore-2.jpg"), caption: "exploring tech 🔍", rotate: 4 },
-        { src: g("wema-bank-hackaholics-1.jpg"), caption: "Hackaholics hackathon 💡", rotate: -5 },
-        { src: g("wema-bank-hackaholics-2.jpg"), caption: "building under pressure ⏱️", rotate: 3 },
-        { src: g("mlsa-event.jpg"), caption: "MLSA event 🌐", rotate: -4 },
-        { src: g("enactus.jpg"), caption: "Enactus 🌍", rotate: 4 },
-        { src: g("biv-summit-1.jpg"), caption: "BIV summit 🎤", rotate: -3 },
-        { src: g("biv-summit-2.jpg"), caption: "big ideas ✨", rotate: 5 },
-        { src: g("alx-certificate-after-two-years.png"), caption: "two years of ALX, done 🎓", rotate: -4 },
-        { src: g("side-quest.jpg"), caption: "a little side quest 🗺️", rotate: 3 },
-      ],
-    },
-    {
-      emoji: "⛪",
-      title: "faith & family",
-      note: "the people and the peace that kept me grounded through it all.",
-      photos: [
-        { src: g("sabbath-1.jpg"), caption: "sabbath rest 🤍", rotate: -4 },
-        { src: g("sabbath-2.jpg"), caption: "worship days 🎶", rotate: 3 },
-        { src: g("sabbath-3.jpg"), caption: "church fam ⛪", rotate: -3 },
-        { src: g("last-sabbath.jpg"), caption: "last sabbath on campus 🥹", rotate: 5 },
-        { src: g("bethel-chapel-media-team.jpg"), caption: "media team ministry 🎥", rotate: -5 },
-        { src: g("last-week-of-prayer.jpg"), caption: "week of prayer 🙏", rotate: 4 },
-      ],
-    },
-    {
-      emoji: "👑",
-      title: "leading the way",
-      note: "running, serving, and picking up a few trophies along the way.",
-      photos: [
-        { src: g("busa-election-flyer.jpg"), caption: "running for senate 🗳️", rotate: -4 },
-        { src: g("busa-senator.jpg"), caption: "BUSA senator 🏛️", rotate: 3 },
-        { src: g("busa-dinner-1.jpg"), caption: "BUSA dinner 🥂", rotate: -3 },
-        { src: g("busa-dinner-2.jpg"), caption: "leadership nights ✨", rotate: 5 },
-        { src: g("bucc.jpg"), caption: "BUCC 💻", rotate: -5 },
-        { src: g("first-set-of-awards.jpg"), caption: "first set of awards 🏆", rotate: 4 },
-        { src: g("highest-cgpa-awards.jpg"), caption: "highest CGPA 👑", rotate: -3 },
+      emoji: "🫶",
+      title: "communities",
+      note: "the tech, faith and student circles i got to call home.",
+      groups: [
+        many("GDG family 🤖", ["gdg-team-1.jpg", "gdg-team-2.jpg", "gdg-team-3.jpg"], -4),
+        many("orbit field trip 🚀", ["gdg-orbit-field-trip.jpg", "gdg-orbit-field-trip-2.jpg"], 3),
+        one("leading a track 🎯", "gdg-track-event.jpg", -3),
+        many("DevFest 🎉", ["dev-fest-1.jpg", "dev-fest-2.jpg"], 4),
+        many("TechXplore ⚡", ["tech-xplore-1.jpg", "tech-xplore-2.jpg"], -5),
+        many("Hackaholics hackathon 💡", ["wema-bank-hackaholics-1.jpg", "wema-bank-hackaholics-2.jpg"], 3),
+        one("MLSA 🌐", "mlsa-event.jpg", -3),
+        one("Enactus 🌍", "enactus.jpg", 4),
+        many("BIV summit 🎤", ["biv-summit-1.jpg", "biv-summit-2.jpg"], -4),
+        one("two years of ALX 🎓", "alx-certificate-after-two-years.png", 3),
+        one("media team ministry 🎥", "bethel-chapel-media-team.jpg", -5),
+        many("BUSA senate 🏛️", ["busa-election-flyer.jpg", "busa-senator.jpg"], 4),
+        many("BUSA dinner 🥂", ["busa-dinner-1.jpg", "busa-dinner-2.jpg"], -3),
+        one("BUCC 💻", "bucc.jpg", 5),
       ],
     },
     {
       emoji: "🥂",
-      title: "good times",
-      note: "dinners, dress-ups, and the nights we didn't want to end.",
-      photos: [
-        { src: g("second-dinner-1.jpg"), caption: "dinner nights 🍷", rotate: -4 },
-        { src: g("second-dinner-2.jpg"), caption: "dressed to the nines 💃", rotate: 3 },
-        { src: g("departmental-week-ankara-day.jpg"), caption: "ankara day 🌍", rotate: -5 },
-        { src: g("last-departmental-dinner-1.jpg"), caption: "last departmental dinner 🥹", rotate: 4 },
-        { src: g("last-departmental-dinner-2.jpg"), caption: "one last toast 🥂", rotate: -3 },
+      title: "moments",
+      note: "the in-between magic — dinners, dress-ups and grad-week joy.",
+      groups: [
+        many("dinner nights 🍷", ["second-dinner-1.jpg", "second-dinner-2.jpg"], -4),
+        one("ankara day 🌍", "departmental-week-ankara-day.jpg", 3),
+        one("highest CGPA 👑", "highest-cgpa-awards.jpg", -3),
+        one("a little side quest 🗺️", "side-quest.jpg", 4),
+        many("grad week 🎓", ["grad-class-picture-day-2.jpg", "grad-class-rally.jpg", "grad-class-seminar.jpg", "hangout-with-vc.jpg"], -4),
       ],
     },
     {
-      emoji: "🎓",
-      title: "the final bow",
-      note: "the last of the lasts — soaking up every single moment.",
-      photos: [
-        { src: g("grad-class-picture-day-2.jpg"), caption: "class picture day 📸", rotate: -4 },
-        { src: g("grad-class-rally.jpg"), caption: "grad rally 🎉", rotate: 3 },
-        { src: g("grad-class-seminar.jpg"), caption: "grad seminar 🎓", rotate: -3 },
-        { src: g("hangout-with-vc.jpg"), caption: "hangout with the VC 🤝", rotate: 5 },
-        { src: g("bethel-chapel-grad-week.jpg"), caption: "grad week worship 🤍", rotate: -5 },
-        { src: g("last-freshers-fair.jpg"), caption: "last freshers' fair 🎪", rotate: 4 },
-        { src: g("last-morning-run.jpg"), caption: "last morning run 🌅", rotate: -3 },
+      emoji: "🥹",
+      title: "lasts",
+      note: "the last of all the firsts — soaking up every final one.",
+      groups: [
+        many("the last class 🥹", ["last-class-1.jpg", "last-class-2.jpg"], -3),
+        many("last departmental dinner 🥂", ["last-departmental-dinner-1.jpg", "last-departmental-dinner-2.jpg"], 4),
+        one("last freshers' fair 🎪", "last-freshers-fair.jpg", -5),
+        one("last morning run 🌅", "last-morning-run.jpg", 3),
+        one("last sabbath on campus 🤍", "last-sabbath.jpg", -3),
+        one("last week of prayer 🙏", "last-week-of-prayer.jpg", 5),
       ],
     },
-  ] as Chapter[],
+  ] as Section[],
 
-  // Teaser for photos still to come.
-  comingSoon: {
-    emoji: "📸",
-    title: "still to come…",
-    note: "the grad photoshoot and pictures from the big day — dropping here soon! ✨",
+  // The grand finale — placeholder polaroids until the photoshoot & big day.
+  finale: {
+    emoji: "🎓",
+    title: "graduation, finally",
+    note: "the photoshoot and the big day — the grand finale, dropping here very soon ✨",
+    placeholders: [
+      { caption: "the photoshoot 📸", emoji: "📸" },
+      { caption: "the big day 🎓", emoji: "🎓" },
+      { caption: "we made it 💐", emoji: "💐" },
+    ],
   },
 
-  // A heartfelt interlude to my people.
+  // A heartfelt interlude to my people (shown after "communities").
   peopleNote:
     "To everyone who laughed with me, cried with me, prayed for me, and pushed me — you are the best part of this story. I love you all so much. 💛",
 
-  // A little love note.
+  // A little love note (the closer).
   loveNote: [
     "This chapter was everything — the hard days, the happy tears, the friendships that turned into family.",
     "Thank you for being here, for celebrating me, and for being part of my story. Here's to what's next! 💛",

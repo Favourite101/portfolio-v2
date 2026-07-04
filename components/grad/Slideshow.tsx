@@ -3,7 +3,8 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import type { Photo } from "@/lib/grad";
+
+type Slide = { src: string; caption: string; emoji?: string };
 
 const gradients = [
   "linear-gradient(135deg,#fde68a,#f9a8d4)",
@@ -13,7 +14,7 @@ const gradients = [
   "linear-gradient(135deg,#f9a8d4,#c4b5fd)",
 ];
 
-export default function Slideshow({ photos }: { photos: Photo[] }) {
+export default function Slideshow({ photos }: { photos: Slide[] }) {
   const [i, setI] = useState(0);
   const [paused, setPaused] = useState(false);
   const n = photos.length;

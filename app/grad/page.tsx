@@ -4,7 +4,7 @@ import { ArrowRight, Heart } from "lucide-react";
 import Confetti from "@/components/grad/Confetti";
 import FloatingThings from "@/components/grad/FloatingThings";
 import Slideshow from "@/components/grad/Slideshow";
-import Polaroid from "@/components/grad/Polaroid";
+import PhotoGroup from "@/components/grad/PhotoGroup";
 import { grad } from "@/lib/grad";
 import { socials } from "@/lib/data";
 
@@ -71,63 +71,55 @@ export default function GradPage() {
           <Slideshow photos={grad.slideshow} />
         </section>
 
-        {/* BEST MOMENTS THROUGH THE YEARS */}
-        <section className="py-16">
-          <SectionTitle emoji="🗓️">the journey</SectionTitle>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {grad.moments.map((m, i) => (
-              <div
-                key={m.year}
-                className="flex items-center gap-4 rounded-3xl bg-white/70 p-5 shadow-sm"
-                style={{ transform: `rotate(${i % 2 === 0 ? -1.5 : 1.5}deg)` }}
-              >
-                <span className="animate-bob text-4xl" style={{ animationDelay: `${i * 0.3}s` }}>
-                  {m.emoji}
-                </span>
-                <div>
-                  <p className="font-cute text-lg font-bold text-pastel-rose">{m.year}</p>
-                  <p className="text-pastel-ink/75">{m.text}</p>
-                </div>
+        {/* MEMORY SECTIONS */}
+        {grad.sections.map((section) => (
+          <div key={section.title}>
+            <section className="py-16">
+              <SectionTitle emoji={section.emoji}>{section.title}</SectionTitle>
+              {section.note && (
+                <p className="mx-auto -mt-4 mb-10 max-w-lg text-center font-hand text-2xl text-pastel-rose">
+                  {section.note}
+                </p>
+              )}
+              <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-4 [grid-auto-flow:dense]">
+                {section.groups.map((group, i) => (
+                  <PhotoGroup key={group.caption} group={group} index={i} />
+                ))}
               </div>
-            ))}
-          </div>
-        </section>
+            </section>
 
-        {/* THEMED SCRAPBOOK CHAPTERS */}
-        {grad.chapters.map((chapter) => (
-          <section key={chapter.title} className="py-16">
-            <SectionTitle emoji={chapter.emoji}>{chapter.title}</SectionTitle>
-            {chapter.note && (
-              <p className="mx-auto -mt-4 mb-10 max-w-lg text-center font-hand text-2xl text-pastel-rose">
-                {chapter.note}
-              </p>
+            {/* Heartfelt interlude after "communities" */}
+            {section.title === "communities" && (
+              <section className="py-10">
+                <div className="mx-auto max-w-xl rounded-3xl bg-white/60 p-6 text-center shadow-sm sm:p-8">
+                  <Heart className="mx-auto mb-3 animate-bob fill-pastel-rose text-pastel-rose" size={30} />
+                  <p className="text-center font-hand text-2xl leading-snug text-pastel-plum">
+                    {grad.peopleNote}
+                  </p>
+                </div>
+              </section>
             )}
-            <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 lg:grid-cols-4">
-              {chapter.photos.map((photo, i) => (
-                <Polaroid key={photo.src || i} photo={photo} index={i} />
-              ))}
-            </div>
-          </section>
+          </div>
         ))}
 
-        {/* COMING SOON */}
+        {/* GRADUATION, FINALLY (placeholder finale) */}
         <section className="py-16">
-          <div className="mx-auto max-w-xl rounded-[32px] border-2 border-dashed border-pastel-lilac/60 bg-white/50 p-8 text-center shadow-sm sm:p-10">
-            <span className="animate-bob inline-block text-5xl">{grad.comingSoon.emoji}</span>
-            <h2 className="mt-3 font-cute text-3xl font-bold text-pastel-plum sm:text-4xl">
-              {grad.comingSoon.title}
-            </h2>
-            <p className="mt-3 font-hand text-2xl text-pastel-rose">{grad.comingSoon.note}</p>
-          </div>
-        </section>
-
-        {/* MY PEOPLE */}
-        <section className="py-16">
-          <SectionTitle emoji="🫶">my people</SectionTitle>
-          <div className="mx-auto max-w-xl rounded-3xl bg-white/60 p-6 text-center shadow-sm sm:p-8">
-            <p className="text-center font-hand text-2xl leading-snug text-pastel-plum">
-              {grad.peopleNote}
-            </p>
+          <SectionTitle emoji={grad.finale.emoji}>{grad.finale.title}</SectionTitle>
+          <p className="mx-auto -mt-4 mb-10 max-w-lg text-center font-hand text-2xl text-pastel-rose">
+            {grad.finale.note}
+          </p>
+          <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3">
+            {grad.finale.placeholders.map((p, i) => (
+              <PhotoGroup
+                key={p.caption}
+                index={i}
+                group={{
+                  caption: p.caption,
+                  rotate: i % 2 === 0 ? -3 : 4,
+                  photos: [{ src: "", emoji: p.emoji }],
+                }}
+              />
+            ))}
           </div>
         </section>
 
