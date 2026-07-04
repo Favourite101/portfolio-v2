@@ -70,7 +70,7 @@ export const grad = {
       note: "every story starts somewhere — here's where mine did.",
       groups: [
         many("matriculation day 🎓", ["matric-2.jpg", "IMG-20230623-WA0004.jpg", "matric-4.jpg"], -4),
-        one("day one on campus ✨", "first-day.png", 3),
+        one("day one on campus ✨", "first-day.jpg", 3),
         one("first week nerves 🌸", "first-week-2.jpg", -3),
         many("first dinner ✨", ["first-dinner-1.jpg", "first-dinner-2.jpg", "first-dinner-3.jpg"], 4),
         one("first sabbath 🤍", "first-sabbath.jpg", 3),
@@ -82,7 +82,7 @@ export const grad = {
       title: "the grind",
       note: "the internships, defenses and long nights that earned the gown.",
       groups: [
-        one("two years of ALX 🎓", "alx-certificate-after-two-years.png", 3),
+        one("two years of ALX 🎓", "alx-certificate-after-two-years.jpg", 3),
         many("SIWES · internship 💼", ["siwes-1.jpg", "siwes-2.jpg"], -3),
         one("SIWES defense 🎤", "siwes-defense.jpg", -3),
         many("mini defense 🎤", ["mini-defense-1.jpg", "mini-defense-2.jpg"], 4),
@@ -106,7 +106,7 @@ export const grad = {
         one("bethel chapel media team 🎥", "bethel-chapel-media-team.jpg", -5),
         many("BUSA senate 🏛️", ["busa-election-flyer.jpg", "busa-senator.jpg"], 4),
         one("BUCC 💻", "bucc.jpg", 5),
-        one("academic committee 🫂", "academic-committee.png", -5),
+        one("academic committee 🫂", "academic-committee.jpg", -5),
       ],
     },
     {
