@@ -31,12 +31,13 @@ export default function PhotoGroup({ group, index = 0 }: { group: Group; index?:
   const rotate = group.rotate ?? 0;
   const n = group.photos.length;
   const multi = n > 1;
-  const innerCols = n === 3 ? "grid-cols-3" : "grid-cols-2";
+  const full = n >= 4;
+  const innerCols = n >= 5 ? "grid-cols-5" : n === 4 ? "grid-cols-4" : n === 3 ? "grid-cols-3" : "grid-cols-2";
 
   return (
     <figure
       className={`group relative rounded-[14px] bg-white p-3 pb-0 shadow-[0_10px_30px_-12px_rgba(91,59,87,0.45)] transition-transform duration-300 hover:z-10 hover:!rotate-0 hover:scale-[1.03] ${
-        multi ? "col-span-2" : "col-span-1"
+        full ? "col-span-2 sm:col-span-4" : multi ? "col-span-2" : "col-span-1"
       }`}
       style={{ transform: `rotate(${rotate}deg)` }}
     >

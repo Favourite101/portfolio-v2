@@ -51,8 +51,10 @@ export default function GradPage() {
             <p className="mt-1 text-pastel-ink/70">
               {grad.degree} · {grad.school}
             </p>
-            <p className="mt-2 inline-block rounded-full bg-pastel-butter/50 px-4 py-1 text-sm font-semibold text-pastel-plum">
-              ⭐ {grad.honor} · {grad.gpa}
+            <p className="mt-2 inline-block rounded-2xl bg-pastel-butter/50 px-4 py-2 text-center text-sm font-semibold text-pastel-plum">
+              ⭐ {grad.honor}
+              <br />
+              {grad.gpa}
             </p>
           </div>
 
@@ -160,7 +162,7 @@ export default function GradPage() {
         </section>
 
         <footer className="pb-12 pt-6 text-center font-hand text-2xl text-pastel-lilac">
-          {grad.name} · {grad.classOf} 🎓💛
+          {grad.name} · Nova {grad.classOf} 🎓💛
         </footer>
       </div>
     </main>
