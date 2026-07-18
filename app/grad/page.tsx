@@ -104,23 +104,15 @@ export default function GradPage() {
           </div>
         ))}
 
-        {/* GRADUATION, FINALLY (placeholder finale) */}
+        {/* GRADUATION, FINALLY */}
         <section className="py-16">
           <SectionTitle emoji={grad.finale.emoji}>{grad.finale.title}</SectionTitle>
           <p className="mx-auto -mt-4 mb-10 max-w-lg text-center font-hand text-2xl text-pastel-rose">
             {grad.finale.note}
           </p>
-          <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3">
-            {grad.finale.placeholders.map((p, i) => (
-              <PhotoGroup
-                key={p.caption}
-                index={i}
-                group={{
-                  caption: p.caption,
-                  rotate: i % 2 === 0 ? -3 : 4,
-                  photos: [{ src: "", emoji: p.emoji }],
-                }}
-              />
+          <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-4 [grid-auto-flow:dense]">
+            {grad.finale.groups.map((group, i) => (
+              <PhotoGroup key={group.caption} group={group} index={i} />
             ))}
           </div>
         </section>
