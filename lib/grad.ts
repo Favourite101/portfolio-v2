@@ -151,20 +151,15 @@ export const grad = {
     emoji: "🎓",
     title: "graduation, finally",
     note: "the big day — we made it! 🎓✨",
-    photos: [
-      // 5 personal pictures
-      { src: g("awards.jpg"), caption: "celebrating the wins 🏆" },
-      { src: g("biting-medal.jpg"), caption: "first class graduate 🏅" },
-      { src: g("cap-only.jpg"), caption: "hats off to the journey 🎓" },
-      { src: g("certificates.jpg"), caption: "all the hard work paid off 📜" },
-      { src: g("full-regalia.jpg"), caption: "suited up for the finale ✨" },
-      // 3 pictures with friends
-      { src: g("with-debbie.jpg"), caption: "the squad (with Debbie) 🫂" },
-      { src: g("with-koks.jpg"), caption: "the squad (with Koks) 💐" },
-      { src: g("shazzy-and-soji.jpg"), caption: "the squad (Shazzy & Soji) 🎓" },
-    ],
+    groups: [
+      one("celebrating the wins 🏆", "awards.jpg", -3),
+      one("first class graduate 🏅", "biting-medal.jpg", 4),
+      one("hats off to the journey 🎓", "cap-only.jpg", -3),
+      one("all the hard work paid off 📜", "certificates.jpg", 4),
+      one("suited up for the finale ✨", "full-regalia.jpg", -3),
+      many("with the best people 🫂💐", ["with-debbie.jpg", "with-koks.jpg", "shazzy-and-soji.jpg"], 4),
+    ] as Group[],
   },
-
   // A heartfelt interlude to my people (shown after "communities").
   peopleNote:
     "To everyone who laughed with me, cried with me, prayed for me, and pushed me — you are the best part of this story. I love you all so much. 💛",
