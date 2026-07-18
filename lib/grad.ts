@@ -157,7 +157,7 @@ export const grad = {
       one("hats off to the journey 🎓", "cap-only.jpg", -3),
       one("all the hard work paid off 📜", "certificates.jpg", 4),
       one("suited up for the finale ✨", "full-regalia.jpg", -3),
-      many("with the best people 🫂💐", ["with-debbie.jpg", "with-koks.jpg", "shazzy-and-soji.jpg"], 4),
+      many("with the best people 🫂💐", ["with-debbie.jpg", "with-koks.jpg", "with-shazzy.jpeg", "shazzy-and-soji.jpg"], 4),
     ] as Group[],
   },
   // A heartfelt interlude to my people (shown after "communities").
