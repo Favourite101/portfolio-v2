@@ -60,7 +60,7 @@ export const grad = {
     { src: g("final-defense-1.jpg"), caption: "defended it! 🎤" },
     { src: g("grad-class-picture-day-2.jpg"), caption: "picture day 📸" },
     { src: g("bethel-chapel-grad-week.jpg"), caption: "grad week sabbath 💃🏽" },
-    { src: "", caption: "and this is how it ends… 📸✨", emoji: "📸" },
+    { src: g("holding-sash.jpg"), caption: "and this is how it ends… 📸✨" },
   ] as (Photo & { caption: string })[],
 
   sections: [
@@ -146,15 +146,22 @@ export const grad = {
     },
   ] as Section[],
 
-  // The grand finale — placeholder polaroids until the photoshoot & big day.
+  // The grand finale — photoshoot & big day.
   finale: {
     emoji: "🎓",
     title: "graduation, finally",
-    note: "the photoshoot and the big day — the grand finale, dropping here very soon ✨",
-    placeholders: [
-      { caption: "the photoshoot 📸", emoji: "📸" },
-      { caption: "the big day 🎓", emoji: "🎓" },
-      { caption: "we made it 💐", emoji: "💐" },
+    note: "the big day — we made it! 🎓✨",
+    photos: [
+      // 5 personal pictures
+      { src: g("awards.jpg"), caption: "celebrating the wins 🏆" },
+      { src: g("biting-medal.jpg"), caption: "first class graduate 🏅" },
+      { src: g("cap-only.jpg"), caption: "hats off to the journey 🎓" },
+      { src: g("certificates.jpg"), caption: "all the hard work paid off 📜" },
+      { src: g("full-regalia.jpg"), caption: "suited up for the finale ✨" },
+      // 3 pictures with friends
+      { src: g("with-debbie.jpg"), caption: "the squad (with Debbie) 🫂" },
+      { src: g("with-koks.jpg"), caption: "the squad (with Koks) 💐" },
+      { src: g("shazzy-and-soji.jpg"), caption: "the squad (Shazzy & Soji) 🎓" },
     ],
   },
 
@@ -164,7 +171,7 @@ export const grad = {
 
   // A little love note (the closer).
   loveNote: [
-    "This chapter was everything — the hard days, the happy tears, the friendships that turned into family.",
+    "This chapter was everything: the hard days, the happy tears, the friendships that turned into family.",
     "Thank you for being here, for celebrating me, and for being part of my story. Here's to what's next! 💛",
   ],
 
